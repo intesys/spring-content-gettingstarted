@@ -7,7 +7,7 @@
     <artifactId>spring-content-with-fulltext</artifactId>
 
     <parent>
-        <groupId>com.github.paulcwarren</groupId>
+        <groupId>it.intesys</groupId>
         <artifactId>gettingstarted-spring-content</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
@@ -43,17 +43,17 @@
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.paulcwarren</groupId>
+            <groupId>it.intesys</groupId>
             <artifactId>spring-content-fs-boot-starter</artifactId>
             <version>${spring.content.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.paulcwarren</groupId>
+            <groupId>it.intesys</groupId>
             <artifactId>spring-content-rest-boot-starter</artifactId>
             <version>${spring.content.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.paulcwarren</groupId>
+            <groupId>it.intesys</groupId>
             <artifactId>spring-content-elasticsearch-boot-starter</artifactId>
             <version>${spring.content.version}</version>
         </dependency>
