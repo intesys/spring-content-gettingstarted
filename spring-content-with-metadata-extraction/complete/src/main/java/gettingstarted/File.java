@@ -12,7 +12,6 @@ import org.springframework.content.commons.annotations.ContentLength;
 import org.springframework.content.commons.annotations.MimeType;
 
 import java.util.Date;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -30,8 +29,4 @@ public class File {
 	@ContentId private String contentId;
 	@ContentLength private long contentLength;
 	@MimeType private String contentMimeType;
-
-	@ContentId private UUID renditionId;
-	@ContentLength private Long renditionLen;
-	@MimeType private String renditionMimeType;
 }

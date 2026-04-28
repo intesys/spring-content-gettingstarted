@@ -1,12 +1,8 @@
 package gettingstarted;
 
-import static com.github.paulcwarren.ginkgo4j.Ginkgo4jDSL.BeforeEach;
-import static com.github.paulcwarren.ginkgo4j.Ginkgo4jDSL.Context;
-import static com.github.paulcwarren.ginkgo4j.Ginkgo4jDSL.Describe;
-import static com.github.paulcwarren.ginkgo4j.Ginkgo4jDSL.It;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.nullValue;
+import static com.github.paulcwarren.ginkgo4j.Ginkgo4jDSL.*;
+import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
+import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.io.File;
@@ -17,12 +13,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 
 import com.github.paulcwarren.ginkgo4j.Ginkgo4jSpringRunner;
 import org.springframework.content.commons.metadataextraction.MetadataExtractionService;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.context.WebApplicationContext;
 
+
+import org.apache.commons.io.IOUtils;
 
 @RunWith(Ginkgo4jSpringRunner.class)
 @SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -69,6 +68,35 @@ public class GettingStartedTest {
 					fileEntity = fileRepo.save(fileEntity);
 
 					assertThat(fileEntity.getContentLength(), is(metadata.get("size")));
+				});
+
+				It("should be possible to upload content via from-real-file API", () -> {
+					long initialCount = fileRepo.count();
+
+					given()
+						.multiPart("file", realFile)
+					.when()
+						.post("/files/from-real-file")
+					.then()
+						.statusCode(HttpStatus.OK.value())
+						.body(containsString("File successfully saved"))
+						.body(containsString("empty_pdf.pdf"))
+						.body(containsString("mimeType=application/pdf"));
+
+					assertThat(fileRepo.count(), is(initialCount + 1));
+
+					var savedFile = fileRepo.findAll().stream()
+							.filter(f -> "empty_pdf.pdf".equals(f.getName()))
+							.findFirst()
+							.orElseThrow();
+
+					assertThat(savedFile.getContentId(), is(not(nullValue())));
+					assertThat(savedFile.getContentLength(), is(realFile.length()));
+
+					try (var contentStream = fileContentStore.getContent(savedFile);
+						 var originalStream = new FileInputStream(realFile)) {
+						assertThat(IOUtils.contentEquals(contentStream, originalStream), is(true));
+					}
 				});
         	});
         });
