@@ -32,9 +32,9 @@
 
 	<repositories>
 		<repository>
-			<id>ossrh</id>
-			<name>Sonatype Snapshots</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<id>central</id>
+			<name>nexus</name>
+			<url>https://central.sonatype.com/repository/maven-snapshots</url>
 			<snapshots>
 				<enabled>true</enabled>
 				<updatePolicy>always</updatePolicy>
