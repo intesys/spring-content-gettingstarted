@@ -20,7 +20,7 @@
 	</properties>
 
 	<modules>
-  		<module>./spring-content-fs/complete</module>
+		<module>./spring-content-fs/complete</module>
 		<module>./spring-content-rest/complete</module>
 		<module>./spring-content-with-fulltext/complete</module>
 		<module>./spring-content-with-rbac/complete</module>
@@ -29,6 +29,18 @@
 		<module>./spring-content-with-versions/complete</module>
 		<module>./spring-content-with-encryption/complete</module>
 	</modules>
+
+	<repositories>
+		<repository>
+			<id>ossrh</id>
+			<name>Sonatype Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
 
 	<profiles>
 		<profile>
