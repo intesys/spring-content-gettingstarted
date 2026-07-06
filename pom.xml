@@ -10,13 +10,18 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.content.version>3.1.0</spring.content.version>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+		<spring.content.version>4.0.0-SNAPSHOT</spring.content.version>
+		<springboot.version>4.0.5</springboot.version>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 
 		<!-- Test dependencies -->
 		<ginkgo.version>1.0.15</ginkgo.version>
         	<test-containers.version>1.17.6</test-containers.version>
+		<!-- rest-assured is no longer managed by the Spring Boot 4 BOM -->
+		<rest-assured.version>6.0.0</rest-assured.version>
+		<!-- Spring Vault 4.x is required for Spring Framework 7 (Spring Boot 4) -->
+		<spring-vault.version>4.0.1</spring-vault.version>
 	</properties>
 
 	<modules>

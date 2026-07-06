@@ -68,11 +68,12 @@ public class SpringContentApplication {
         @Bean
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
             http
-                    .csrf().disable()
-                    .authorizeRequests()
-                    .requestMatchers("/admin/**").hasRole("ADMIN")
-                    .and().httpBasic().realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint())
-                    .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                    .csrf(csrf -> csrf.disable())
+                    .authorizeHttpRequests(auth -> auth
+                            .requestMatchers("/admin/**").hasRole("ADMIN")
+                            .anyRequest().permitAll())
+                    .httpBasic(basic -> basic.realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint()))
+                    .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
             return http.build();
         }
