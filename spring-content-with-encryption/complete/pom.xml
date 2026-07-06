@@ -19,13 +19,6 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<!-- Force Spring Vault 4.x (Spring Framework 7 compatible) over the version
-			     brought in transitively by spring-content-encryption -->
-			<dependency>
-				<groupId>org.springframework.vault</groupId>
-				<artifactId>spring-vault-core</artifactId>
-				<version>${spring-vault.version}</version>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

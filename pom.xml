@@ -20,8 +20,6 @@
         	<test-containers.version>1.17.6</test-containers.version>
 		<!-- rest-assured is no longer managed by the Spring Boot 4 BOM -->
 		<rest-assured.version>6.0.0</rest-assured.version>
-		<!-- Spring Vault 4.x is required for Spring Framework 7 (Spring Boot 4) -->
-		<spring-vault.version>4.0.1</spring-vault.version>
 	</properties>
 
 	<modules>
