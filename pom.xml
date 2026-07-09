@@ -17,7 +17,7 @@
 
 		<!-- Test dependencies -->
 		<ginkgo.version>1.0.15</ginkgo.version>
-        	<test-containers.version>1.17.6</test-containers.version>
+        	<test-containers.version>1.21.4</test-containers.version>
 		<!-- rest-assured is no longer managed by the Spring Boot 4 BOM -->
 		<rest-assured.version>6.0.0</rest-assured.version>
 	</properties>
