@@ -11,7 +11,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.content.version>4.0.0-SNAPSHOT</spring.content.version>
-		<springboot.version>4.0.5</springboot.version>
+		<springboot.version>4.1.0</springboot.version>
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.compiler.target>21</maven.compiler.target>
 
