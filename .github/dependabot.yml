@@ -30,3 +30,37 @@ updates:
   - dependency-name: com.github.paulcwarren:spring-content-elasticsearch-boot-starter
     versions:
     - 1.2.1
+- package-ecosystem: maven
+  directory: "/"
+  target-branch: support/spring-boot-3
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: com.github.paulcwarren:spring-content-cmis
+    versions:
+    - 1.2.2
+  - dependency-name: com.github.paulcwarren:spring-versions-jpa
+    versions:
+    - 1.2.2
+  - dependency-name: org.springframework.boot:spring-boot-starter-parent
+    versions:
+    - 2.4.3
+  - dependency-name: org.springframework.boot:spring-boot-starter-parent
+    update-types:
+    - version-update:semver-major
+  - dependency-name: com.github.paulcwarren:spring-content-fs-boot-starter
+    versions:
+    - 1.2.1
+  - dependency-name: com.github.paulcwarren:spring-content-rest-boot-starter
+    versions:
+    - 1.2.1
+  - dependency-name: com.github.paulcwarren:spring-content-renditions-boot-starter
+    versions:
+    - 1.2.1
+  - dependency-name: com.github.paulcwarren:spring-versions-jpa-boot-starter
+    versions:
+    - 1.2.1
+  - dependency-name: com.github.paulcwarren:spring-content-elasticsearch-boot-starter
+    versions:
+    - 1.2.1
