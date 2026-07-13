@@ -12,8 +12,14 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.content.version>4.0.0-SNAPSHOT</spring.content.version>
 		<springboot.version>4.1.0</springboot.version>
-		<maven.compiler.source>21</maven.compiler.source>
-		<maven.compiler.target>21</maven.compiler.target>
+		<java.version>25</java.version>
+		<maven.compiler.release>25</maven.compiler.release>
+
+		<!-- Build plugin versions -->
+		<maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+		<!-- Lombok is managed by the Spring Boot BOM, but the compiler plugin's
+		     annotationProcessorPaths need the version stated explicitly -->
+		<lombok.version>1.18.46</lombok.version>
 
 		<!-- Test dependencies -->
 		<ginkgo.version>1.0.15</ginkgo.version>
@@ -21,6 +27,33 @@
 		<!-- rest-assured is no longer managed by the Spring Boot 4 BOM -->
 		<rest-assured.version>6.0.1</rest-assured.version>
 	</properties>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- Pin a modern compiler plugin and register Lombok as an
+				     annotation processor explicitly. Since JDK 23 implicit
+				     annotation processing (processors merely on the classpath)
+				     is disabled, so Lombok must be listed on the processor path
+				     for its generated accessors to be compiled under JDK 25. -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+					<configuration>
+						<release>${maven.compiler.release}</release>
+						<annotationProcessorPaths>
+							<path>
+								<groupId>org.projectlombok</groupId>
+								<artifactId>lombok</artifactId>
+								<version>${lombok.version}</version>
+							</path>
+						</annotationProcessorPaths>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
 	<modules>
 		<module>./spring-content-fs/complete</module>
