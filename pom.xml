@@ -10,7 +10,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.content.version>4.0.0</spring.content.version>
+		<spring.content.version>4.0.1</spring.content.version>
 		<springboot.version>4.1.0</springboot.version>
 		<java.version>25</java.version>
 		<maven.compiler.release>25</maven.compiler.release>
